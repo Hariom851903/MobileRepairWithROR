@@ -1,0 +1,36 @@
+<!-- app/views/sessions/new.html.erb -->
+<h1>Login</h1>
+
+<%= form_with(url: '/login', method: 'post') do |form| %>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+ <div class="form-container">
+    <%= form.submit "Login", class: "form-submit", onclick: "showAlerts()" %>
+  </div>
+
+  <!-- ... (rest of the form) ... -->
+
+<% end %>
+
+<script>
+  function showAlerts() {
+    setTimeout(function() {
+      var successMessage = "<%= flash[:success] %>";
+      var errorMessage = "<%= flash[:error] %>";
+
+      if (successMessage !== "") {
+        alert(successMessage);
+      } else if (errorMessage !== "") {
+        alert(errorMessage);
+      }
+    }, 0);
+  }
+</script>

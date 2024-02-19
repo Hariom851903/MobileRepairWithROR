@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Repairphone</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+     <%= stylesheet_link_tag 'navbar' %>
+
+  </head>
+
+ <body>
+
+    <h1 style="color:red;"><%= flash[:success] %></h1>
+   <%= render 'common/nav', profile: @profile %>
+
+</body>
+
+</html>

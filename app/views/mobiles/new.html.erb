@@ -1,0 +1,29 @@
+<%= flash[:error]%>
+<%= form_with model: @mobile do |form| %>
+  <div class="field">
+    <%= form.label :Model %>
+    <%= form.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :imei %>
+    <%= form.text_field :imei %>
+  </div>
+
+  <div class="field">
+    <%= form.label :problem_list_id, 'Problem List' %>
+  <%= form.collection_select :problem_list_id, ProblemList.all, :id, :p_name, { prompt: 'Select Problem List' }, { name: 'problem_list_id' } %>
+
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Mobile" %>
+  </div>
+<% end %>
+

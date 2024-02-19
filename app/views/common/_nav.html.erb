@@ -1,0 +1,18 @@
+<!-- app/views/common/_nav.html.erb -->
+
+
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <% if session[:profile_id] %>
+      <li>
+         <%= link_to 'Dashboard', dashboard_path(@profile.username) %>
+    </li>
+  
+    <% else %>
+      <li><%= link_to 'Login', '/login' %></li>
+      <li><%= link_to 'Signup', new_profile_path %></li>
+    <% end %>  
+  </ul>
+</nav>
+

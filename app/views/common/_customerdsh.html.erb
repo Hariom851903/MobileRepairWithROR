@@ -1,0 +1,38 @@
+<% if  @profile.user=='customer'%>
+<nav class="navbar">
+  <ul>
+  <li><% if @profile.image.attached? %>
+  <%= image_tag(@profile.image) %>
+   <%else %>
+  <p>No picture</p>
+<% end %>
+</li>
+    <li><%= link_to 'Home' , root_path%></li>
+    <li><%= link_to 'Add Mobile', new_mobile_path(@username) %></li>
+    <li><%= link_to 'Update Mobile' %></li>
+    <li><%= link_to 'Tracking' %></li>
+    <li><%= link_to 'Show Mobile'%></li>
+    <li><%= link_to 'Update Profile' %></li>
+  <li><%= link_to 'Change Password' %></li>
+   <li><%= link_to 'Logout', logout_path %></li>
+  </ul>
+</nav>
+<%else %>
+<nav class="navbar">
+  <ul>
+   <li><% if @profile.image.attached? %>
+  <%= image_tag url_for(@profile.image) %>
+  <%else %>
+  <p>No picture</p>
+<% end %></li>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Request' %></li>
+    <li><%= link_to 'RepairMen' %></li>
+    <li><%= link_to 'penddingStatus' %></li>
+    <li><%= link_to 'Compeleted'%></li>
+    <li><%= link_to 'Bill' %></li>
+  <li><%= link_to 'Change Password' %></li>
+    <li><%= link_to 'logout', logout_path %></li>
+  </ul>
+</nav>
+<%end%>

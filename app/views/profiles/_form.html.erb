@@ -1,0 +1,74 @@
+<!-- app/views/profiles/new.html.erb -->
+<h1>New Profile</h1>
+
+<h1 style="color:red;"><%= flash[:error]%></h1>
+
+<div class="main">
+<%= form_with(model: @profile, class: "form-container") do |form| %>
+<div class="form-container">
+    <%= form.label :username, class: "form-label" %>
+    <%= form.text_field :username, class: "form-input" %>
+  </div>
+  <div class="form-container">
+    <%= form.label :firstname, class: "form-label" %>
+    <%= form.text_field :firstname, class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :lastname, class: "form-label" %>
+    <%= form.text_field :lastname, class: "form-input" %>
+  </div>
+   <div class="form-container">
+    <%= form.label :image, class: "form-label" %>
+  <%= form.file_field :image, class: "form-input" %>
+  </div>
+ 
+
+  <div class="form-container">
+    <%= form.label :userprofile, class: "form-label" %>
+    <%= form.select :user, options_for_select(['admin', 'customer']), { prompt: 'Select User Type' }, class: "form-select" %>
+  </div>
+ <div class="form-container">
+  <%= form.label :state, class: "form-label" %>
+  <%= form.select :state, options_for_select(@state.map { |single| [single["state_name"], single["state_id"]] }), { prompt: 'Select User Type' }, { class: "form-select", name: "state" } %>
+</div>
+
+
+
+
+  <div class="form-container">
+    <%= form.label :gender, class: "form-label" %>
+    <%= form.select :gender, options_for_select(['Male', 'Female', 'Other']), { prompt: 'Select Gender' }, class: "form-select" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :dob, class: "form-label" %>
+    <%= form.date_field :dob, class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-input" %>
+  </div>
+
+<div class="form-container">
+      <%= form.label :password, class: "form-label" %>
+      <%= form.password_field :password, class: "form-input" %>
+    </div>
+  <div class="form-container">
+    <%= form.label :address, class: "form-label" %>
+    <%= form.text_area :address, class: "form-input", rows: 4 %>
+  </div>
+
+<div class="form-container">
+    <%= form.submit "Create Profile", class: "form-submit"%>
+  </div>
+
+  <!-- ... (rest of the form) ... -->
+  <%# :password_confirmation %>
+
+<% end %>
+
+</div>
+
+
