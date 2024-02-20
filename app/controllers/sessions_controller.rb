@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
             if @profile && @profile.authenticate(params[:password])
               # Log in the user
               session[:profile_id] = @profile.id
+              session[:username]=@profile.username
               flash[:success]='Logged in successfullylkh'
               redirect_to dashboard_path(@profile.username)
             else
@@ -18,6 +19,7 @@ class SessionsController < ApplicationController
         def destroy 
             if session[:profile_id]
                 session[:profile_id]=nil
+                session[:username]=nil
                 flash[:success]= 'Logged out!'   
                 redirect_to root_path
             end    
