@@ -39,7 +39,7 @@ class ProfilesController < ApplicationController
     def profile_params
         params.require(:profile)
         .permit(:username,:firstname, :lastname,
-        :user,:gender, :dob, :email, :password,:state,:city,:address,:phonenumber)
+        :user,:gender, :dob, :email, :password,:state,:city,:address,:phonenumber,:image)
        end
     def api_state
         url = URI("https://cdn-api.co-vin.in/api/v2/admin/location/states") # Replace this with the API endpoint URL

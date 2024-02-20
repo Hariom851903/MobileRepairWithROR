@@ -1,6 +1,7 @@
 <% if  @profile.user=='customer'%>
 <nav class="navbar">
   <ul>
+   <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
     <li><%= link_to 'Home' , root_path%></li>
     <li><%= link_to 'Add Mobile', new_mobile_path(@username) %></li>
     <li><%= link_to 'Update Mobile' %></li>
@@ -14,7 +15,7 @@
 <%else %>
 <nav class="navbar">
   <ul>
-  </li>
+       <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
     <li><%= link_to 'Home', root_path %></li>
     <li><%= link_to 'Request' %></li>
     <li><%= link_to 'RepairMen' %></li>
