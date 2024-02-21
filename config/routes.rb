@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'  
   get   '/dashboard/:username',to: 'dashboard#index',as: 'dashboard'
   root "home#index"
-
+             
+       resources :otps
       resources :profiles
       scope 'dashboard/:username' do
       # Ex:- scope :active, -> {where(:active => true)}
