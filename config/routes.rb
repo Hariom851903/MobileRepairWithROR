@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'  
   get   '/dashboard/:username',to: 'dashboard#index',as: 'dashboard'
   root "home#index"
-
+  get '/verification_otp', to: 'profiles#verifyotp', as: 'verificationOtp'
+  post '/verified',to: 'profiles#verify', as: 'verifiedotp' 
+       resources :otps
       resources :profiles
       scope 'dashboard/:username' do
       # Ex:- scope :active, -> {where(:active => true)}

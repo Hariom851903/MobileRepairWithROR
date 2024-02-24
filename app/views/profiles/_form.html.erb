@@ -4,7 +4,7 @@
 <h1 style="color:red;"><%= flash[:error]%></h1>
 
 <div class="main">
-<%= form_with(model: @profile, class: "form-container") do |form| %>
+<%= form_with(model: @profile,url: profiles_path ,class: "form-container") do |form| %>
 <div class="form-container">
     <%= form.label :username, class: "form-label" %>
     <%= form.text_field :username, class: "form-input" %>
@@ -26,7 +26,8 @@
 
   <div class="form-container">
     <%= form.label :userprofile, class: "form-label" %>
-    <%= form.select :user, options_for_select(['admin', 'customer']), { prompt: 'Select User Type' }, class: "form-select" %>
+    <%= form.select :user, options_for_select(['admin', 'customer']), 
+    { prompt: 'Select User Type' }, class: "form-select" %>
   </div>
 <div class="form-container">
   <%= form.label :state, class: "form-label" %>

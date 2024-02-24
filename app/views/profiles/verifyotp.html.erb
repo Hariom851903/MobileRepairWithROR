@@ -1,0 +1,5 @@
+<%= flash[:error]%>
+<%= form_tag verifiedotp_path, method: :post do %>
+<%= text_field_tag :otp%>
+<%= submit_tag %>
+<%end%>
