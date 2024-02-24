@@ -1,5 +1,30 @@
-<%= flash[:error]%>
-<%= form_tag verifiedotp_path, method: :post do %>
-<%= text_field_tag :otp%>
-<%= submit_tag %>
-<%end%>
+<div><%=flash[:error] flash[:success] %> </div>
+<div class="container">
+    <form action="/verify_otp" method="POST">
+      <div class="otp-inputs">
+        <input type="text" maxlength="1" name="otp1" required>
+        <input type="text" maxlength="1" name="otp2" required>
+        <input type="text" maxlength="1" name="otp3" required>
+        <input type="text" maxlength="1" name="otp4" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Verify OTP</button>
+      </div>
+    </form>
+    <%= button_to "Resend OTP", resend_otp_path, method: :post,
+     class: "resend-otp-button", data: { confirm: "Are you sure you want to resend OTP?" } %>
+
+
+
+  </div>
+
+
+
+
+
+
+<%# <%= flash[:error]%> 
+<%# <%= form_tag verifiedotp_path, method: :post do %> 
+<%# <%= text_field_tag :otp%> 
+<%# <%= submit_tag %> 
+<%# <%end %> 

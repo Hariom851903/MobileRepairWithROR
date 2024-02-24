@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get   '/dashboard/:username',to: 'dashboard#index',as: 'dashboard'
   root "home#index"
   get '/verification_otp', to: 'profiles#verifyotp', as: 'verificationOtp'
-  post '/verified',to: 'profiles#verify', as: 'verifiedotp' 
+  post '/verify_otp',to: 'profiles#verify', as: 'verifiedotp' 
+  post 'resend_otp', to: 'profiles#resend_otp'
+
        resources :otps
       resources :profiles
       scope 'dashboard/:username' do
