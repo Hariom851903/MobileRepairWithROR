@@ -2,16 +2,43 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      /* Add your CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+      .otp {
+        font-size: 24px;
+        color: #007bff;
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @profile.firstname %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is: <%=@profile.email %>.<br>
-    </p>
-    <p>
-      To login to the site, just follow this link:
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <div class="container">
+      <h1>Welcome to OUR WEBSITE</h1>
+      <p>
+        You have successfully signed up to our WEBSITE<br>
+        Your OTP for verification is: <span class="otp"><%= @otpdata.otp %></span>
+      </p>
+      <p>
+        To complete the verification process, please enter this OTP on the site.
+      </p>
+      <p>Thanks for joining and have a great day!</p>
+    </div>
   </body>
 </html>

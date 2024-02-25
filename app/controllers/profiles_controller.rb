@@ -9,6 +9,8 @@ class ProfilesController < ApplicationController
     @state = api_state()
     puts @state
     @profile = Profile.new
+    # In your controller or wherever you want to trigger the email sending
+
   end
 
   # Generate unique OTP 
@@ -30,7 +32,9 @@ class ProfilesController < ApplicationController
 
   puts "#{email} #{@otp} #{@expiry_at}"
     @otpdata = Otp.new(email: email, otp: @otp, expiry_at: @expiry_at)
+    UserMailer.welcome_email(@otpdata).deliver_now
     if @otpdata.save
+  
       redirect_to verificationOtp_path   
     else   
       flash[:error] = "Otp send failed"
