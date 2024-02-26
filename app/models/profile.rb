@@ -2,6 +2,11 @@ class Profile < ApplicationRecord
 
     validates :verified, inclusion: { in: [true, false] }
 
+
+                 
+    validates :username, presence: true, length: {minimum:5, maximum:15}
+
+
     validates  :phonenumber,presence: true,
     format: {with: /\A[6-9]\d{9}\z/, 
     message:"valid phone number"}
@@ -23,7 +28,13 @@ class Profile < ApplicationRecord
        one uppercase letter, one digit, and one symbol"
     }, presence: true
     
+   validates :user, 
+   inclusion: {in: ["admin","customer"], message: "valid userType select"},
+    presence: true 
 
+         
+    
+    
     has_one_attached :image
     has_secure_password
     has_many :mobiles 

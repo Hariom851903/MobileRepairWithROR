@@ -1,6 +1,11 @@
 class MobilesController < ApplicationController
     def new
+      @profile= Profile.find_by(id:session[:profile_id])
       @mobile = Mobile.new
+    end
+    def index 
+      @profile= Profile.find_by(id:session[:profile_id])
+      @mobiles= Mobile.where(profile_id:session[:profile_id])
     end
   
     def create
@@ -9,7 +14,8 @@ class MobilesController < ApplicationController
         puts @profile
         if @profile
           @mobile = @profile.mobiles.new(imei: params[:mobile][:imei], 
-          brand: params[:mobile][:brand], model: params[:mobile][:model])
+          brand: params[:mobile][:brand], model: params[:mobile][:model],
+          description: params[:mobile][:description] )
           
           if @mobile.save
             @problem_list = ProblemList.find_by(id: params[:problem_list_id])

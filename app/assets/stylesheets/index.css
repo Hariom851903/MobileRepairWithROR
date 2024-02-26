@@ -1,0 +1,34 @@
+  /* Add your CSS styles here */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+  }
+  .mobile-details {
+    margin-bottom: 20px;
+  }
+  .mobile-details table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .mobile-details table th,
+  .mobile-details table td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  .mobile-details table th {
+    background-color: #f2f2f2;
+  }
