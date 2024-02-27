@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       scope 'dashboard/:username' do
       # Ex:- scope :active, -> {where(:active => true)}
       resources :mobiles
+      end    
+        scope 'dashboard/:username' do 
+          resources :shop
       end
       # Add routes for customer dashboard here
 

@@ -6,20 +6,28 @@
     <%= form.label :username, class: "form-label" %>
     <%= form.text_field :username, class: "form-input" %>
   </div>
-   <%if flash[:error]%>
+   <%
+=begin%>
+ <%if flash[:error]%>
       <% flash[:error]["username"].each do |i|%>
           <p><%= i%></p>
       <%end%>
-    <%end%>
+    <%end%> 
+<%
+=end%>
   <div class="form-container">
     <%= form.label :firstname, class: "form-label" %>
     <%= form.text_field :firstname, class: "form-input" %>
   </div>
-<%if flash[:error]%>
+<%
+=begin%>
+ <%if flash[:error].present?%>
       <% flash[:error]["firstname"].each do |i|%>
                   <p><%= i%></p>
       <%end%>
-    <%end%>
+    <%end%> 
+<%
+=end%>
   <div class="form-container">
     <%= form.label :lastname, class: "form-label" %>
     <%= form.text_field :lastname, class: "form-input" %>
@@ -70,20 +78,28 @@
     <%= form.label :email, class: "form-label" %>
     <%= form.email_field :email, class: "form-input" %>
   </div>
-      <%if flash[:error]%>
+      <%
+=begin%>
+ <%if flash[:error]%>
       <% flash[:error]["email"].each do |i|%>
                   <p><%= i%></p>
       <%end%>
-    <%end%>
+    <%end%> 
+<%
+=end%>
 <div class="form-container">
       <%= form.label :password, class: "form-label" %>
       <%= form.password_field :password, class: "form-input" %>
     </div>
-    <%if flash[:error]%>
+    <%
+=begin%>
+ <%if flash[:error]%>
       <% flash[:error]["password"].each do |i|%>
                    <p><%= i%></p>
       <%end%>
-    <%end%>
+    <%end%> 
+<%
+=end%>
   <div class="form-container">
     <%= form.label :address, class: "form-label" %>
     <%= form.text_area :address, class: "form-input", rows: 4 %>
@@ -92,11 +108,15 @@
     <%= form.label :Phone_Number, class: "form-label" %>
     <%= form.text_field :phonenumber, class: "form-input", rows: 4 %>
   </div>
-<%if flash[:error]%>
+<%
+=begin%>
+ <%if flash[:error]%>
       <% flash[:error]["phonenumber"].each do |i|%>
                    <p><%= i%></p>
       <%end%>
-    <%end%>
+    <%end%> 
+<%
+=end%>
 <div class="form-container">
     <%= form.submit "Create Profile", class: "form-submit"%>
   </div>

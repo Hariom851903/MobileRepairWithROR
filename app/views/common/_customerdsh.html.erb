@@ -17,11 +17,12 @@
   <ul>
        <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
     <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Request' %></li>
-    <li><%= link_to 'RepairMen' %></li>
-    <li><%= link_to 'penddingStatus' %></li>
+    <li><%= link_to 'Add Shop' %></li>
+    <li><%= link_to 'Update Shop' %></li>
+    <li><%= link_to 'Delete Shop' %></li>
     <li><%= link_to 'Compeleted'%></li>
-    <li><%= link_to 'Bill' %></li>
+    <li><%= link_to 'Change Profile' %></li>
+    <li><%= link_to 'LoginShop'%></li>
   <li><%= link_to 'Change Password' %></li>
     <li><%= link_to 'logout', logout_path %></li>
   </ul>
