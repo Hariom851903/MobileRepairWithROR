@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_26_120027) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_27_125111) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -91,9 +91,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_120027) do
     t.boolean "verified"
   end
 
+  create_table "shops", force: :cascade do |t|
+    t.string "s_name"
+    t.string "s_username"
+    t.string "password_digest"
+    t.string "state"
+    t.string "district"
+    t.string "city"
+    t.string "address"
+    t.integer "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_shops_on_profile_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "mobile_problem_lists", "mobiles"
   add_foreign_key "mobile_problem_lists", "problem_lists"
   add_foreign_key "mobiles", "profiles"
+  add_foreign_key "shops", "profiles"
 end
