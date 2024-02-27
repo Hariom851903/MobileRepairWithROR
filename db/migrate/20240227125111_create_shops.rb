@@ -8,6 +8,7 @@ class CreateShops < ActiveRecord::Migration[7.1]
       t.string :district
       t.string :city
       t.string :address
+      t.string :image
       t.references :profile, foreign_key: true 
       t.timestamps
     end

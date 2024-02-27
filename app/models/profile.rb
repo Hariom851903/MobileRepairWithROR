@@ -29,7 +29,7 @@ class Profile < ApplicationRecord
     }, presence: true
     
    validates :user, 
-   inclusion: {in: ["admin","customer"], message: "valid userType select"},
+   inclusion: {in: ["Retailer","customer"], message: "valid userType select"},
     presence: true 
 
          
@@ -38,4 +38,5 @@ class Profile < ApplicationRecord
     has_one_attached :image
     has_secure_password
     has_many :mobiles 
+    has_many  :shops
 end

@@ -1,30 +1,22 @@
-<% if  @profile.user=='customer'%>
+<%@profile=Profile.find_by(username: params[:username])%>
 <nav class="navbar">
   <ul>
-   <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
+    <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
     <li><%= link_to 'Home' , root_path%></li>
-    <li><%= link_to 'Add Mobile', new_mobile_path(session[:username]) %></li>
-    <li><%= link_to 'Update Mobile' %></li>
-    <li><%= link_to 'Tracking' %></li>
-    <li><%= link_to 'Show Mobile', mobiles_path(session[:username])%></li>
-    <li><%= link_to 'Update Profile' %></li>
-  <li><%= link_to 'Change Password' %></li>
-   <li><%= link_to 'Logout', logout_path %></li>
+    <% if @profile.user == 'customer' %>
+      <li><%= link_to 'Add Mobile', new_mobile_path(session[:username]) %></li>
+      <li><%= link_to 'Update Mobile' %></li>
+      <li><%= link_to 'Tracking' %></li>
+      <li><%= link_to 'Show Mobile', mobiles_path(session[:username])%></li>
+    <% else %>
+      <li><%= link_to 'Add Shop', new_shop_path(session[:username]) %></li>
+      <li><%= link_to 'Update Shop' %></li>
+      <li><%= link_to 'Delete Shop' %></li>
+      <li><%= link_to 'Completed'%></li>
+      <li><%= link_to 'Change Profile' %></li>
+      <li><%= link_to 'LoginShop'%></li>
+    <% end %>
+    <li><%= link_to 'Change Password' %></li>
+    <li><%= link_to 'Logout', logout_path %></li>
   </ul>
 </nav>
-<%else %>
-<nav class="navbar">
-  <ul>
-       <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
-    <li><%= link_to 'Home', root_path %></li>
-    <li><%= link_to 'Add Shop' %></li>
-    <li><%= link_to 'Update Shop' %></li>
-    <li><%= link_to 'Delete Shop' %></li>
-    <li><%= link_to 'Compeleted'%></li>
-    <li><%= link_to 'Change Profile' %></li>
-    <li><%= link_to 'LoginShop'%></li>
-  <li><%= link_to 'Change Password' %></li>
-    <li><%= link_to 'logout', logout_path %></li>
-  </ul>
-</nav>
-<%end%>

@@ -99,6 +99,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_125111) do
     t.string "district"
     t.string "city"
     t.string "address"
+    t.string "image"
     t.integer "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
