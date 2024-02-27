@@ -1,0 +1,33 @@
+    
+  <%=render 'common/customerdsh'%>
+  <div class="container">
+    <h1>Mobile Details</h1>
+    <div class="mobile-details">
+      <table>
+      <thead>
+        <tr>
+          <th>Imei</th>
+          <th>Model</th>
+          <th>Brand</th>
+          <th>Problem</th>
+          <th>Problem Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @mobiles.each do |i|%>
+                   <%@m=i.mobile_problem_lists%>
+                   <%@p=ProblemList.find_by(id:@m[0].problem_list_id)%>
+                  
+        <tr>
+        <td><%= i.imei%></td>
+        <td><%= i.model%></td>
+        <td><%= i.brand%></td>
+        <td> <%=@p.p_name%></td>
+        <td><%= i.description%></td>
+        </tr>
+         <%end%>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  

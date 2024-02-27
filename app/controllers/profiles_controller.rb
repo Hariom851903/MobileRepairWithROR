@@ -59,6 +59,9 @@ class ProfilesController < ApplicationController
         if @profile.save
           session[:email] = params[:profile][:email]
           sendotp(session[:email])
+        else   
+            flash[:error]=@profile.errors.messages
+            redirect_to new_profile_path
         end
       end
     rescue => e

@@ -1,4 +1,6 @@
+<%=render 'common/customerdsh'%>
 <%= flash[:error]%>
+<h1>Mobile Information</h1>
 <%= form_with model: @mobile do |form| %>
   <div class="field">
     <%= form.label :Model %>
@@ -19,7 +21,9 @@
     <%= form.label :problem_list_id, 'Problem List' %>
   <%= form.collection_select :problem_list_id, ProblemList.all, :id, :p_name, { prompt: 'Select Problem List' }, { name: 'problem_list_id' } %>
 
-
+ <div class="field">
+    <%= form.label :Description %>
+    <%= form.text_area :description%>
   </div>
 
   <div class="actions">

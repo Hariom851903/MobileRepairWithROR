@@ -3,10 +3,10 @@
   <ul>
    <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
     <li><%= link_to 'Home' , root_path%></li>
-    <li><%= link_to 'Add Mobile', new_mobile_path(@username) %></li>
+    <li><%= link_to 'Add Mobile', new_mobile_path(session[:username]) %></li>
     <li><%= link_to 'Update Mobile' %></li>
     <li><%= link_to 'Tracking' %></li>
-    <li><%= link_to 'Show Mobile'%></li>
+    <li><%= link_to 'Show Mobile', mobiles_path(session[:username])%></li>
     <li><%= link_to 'Update Profile' %></li>
   <li><%= link_to 'Change Password' %></li>
    <li><%= link_to 'Logout', logout_path %></li>
