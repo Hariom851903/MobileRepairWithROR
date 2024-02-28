@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :mobiles
       end    
         scope 'dashboard/:username' do 
-          resources :shop
+          resources :shops
       end
       # Add routes for customer dashboard here
 

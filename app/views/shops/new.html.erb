@@ -1,0 +1,109 @@
+<style>
+/* Container for the form */
+/* Container for the form */
+.main {
+  display: flex;
+  flex-direction:column;
+  place-items: center;
+  max-width: 100%;
+  background-color: #ffffff;
+}
+
+/* Form container */
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 5px;
+}
+
+/* Form label */
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Form input styles */
+.form-input {
+  width: 100%; /* Adjust the width here */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Submit button styles */
+.btn-submit {
+  grid-column: span 2;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+</style>
+
+<%= render 'common/customerdsh'%>
+<div class="main">
+<h1> Shop Information </h1>
+<%= form_with(model: @shop, url: shops_path, method: :post) do |form| %>
+ 
+  <div class="form-container">
+    <%= form.label :s_name, "Name", class: "form-label" %>
+    <%= form.text_field :s_name,  class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :s_username, "Username", class: "form-label" %>
+    <%= form.text_field :s_username, class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :password, "Password", class: "form-label" %>
+    <%= form.password_field :password, class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :state, "State", class: "form-label" %>
+    <%= form.text_field :state, class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :district, "District", class: "form-label" %>
+    <%= form.text_field :district, class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :city, "City", class: "form-label" %>
+    <%= form.text_field :city,  class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :address, "Address", class: "form-label" %>
+    <%= form.text_field :address,  class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.label :image, "Image", class: "form-label" %>
+    <%= form.file_field :image, class: "form-input" %>
+  </div>
+
+  <div class="form-container">
+    <%= form.submit "Submit", class: "btn-submit" %>
+  </div>
+<% end %>
+</div>
