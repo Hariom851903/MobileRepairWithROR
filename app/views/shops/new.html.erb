@@ -59,6 +59,7 @@
 
 <%= render 'common/customerdsh'%>
 <div class="main">
+<%= flash[:error]%>
 <h1> Shop Information </h1>
 <%= form_with(model: @shop, url: shops_path, method: :post) do |form| %>
  
@@ -74,7 +75,7 @@
 
   <div class="form-container">
     <%= form.label :password, "Password", class: "form-label" %>
-    <%= form.password_field :password, class: "form-input" %>
+    <%= form.password_field :password_digest, class: "form-input" %>
   </div>
 
   <div class="form-container">

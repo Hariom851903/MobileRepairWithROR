@@ -10,4 +10,5 @@ class UserMailer < ApplicationMailer
             puts e.message
         end
      end
+
 end

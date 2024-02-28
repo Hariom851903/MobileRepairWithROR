@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
       flash[:error] = "Otp send failed"
       redirect_to new_profile_path  
     end
-  end
+  end             
 
   # SEND OTP into database and create instance of profile
   def create 
@@ -100,7 +100,7 @@ class ProfilesController < ApplicationController
       @userotp="#{params[:otp1]}#{params[:otp2]}#{params[:otp3]}#{params[:otp4]}"
       if @otprecord.otp ==@userotp
         @upprofile = Profile.find_by(email: session[:email])
-        if @upprofile.update_column(:verified, true)
+        if @upprofile.update_column(:verified, true) 
           flash[:success] = "Otp verification successful"
           redirect_to root_path
         end       

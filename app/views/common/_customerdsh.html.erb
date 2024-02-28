@@ -14,7 +14,7 @@
       <li><%= link_to 'Delete Shop' %></li>
       <li><%= link_to 'Completed'%></li>
       <li><%= link_to 'Change Profile' %></li>
-      <li><%= link_to 'LoginShop'%></li>
+      <li><%= link_to 'LoginShop',loginshop_path(session[:username])%></li>
     <% end %>
     <li><%= link_to 'Change Password' %></li>
     <li><%= link_to 'Logout', logout_path %></li>
