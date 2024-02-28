@@ -1,11 +1,25 @@
-<%= render 'common/nav'%>
+
+<%if params[:username]!=nil%>
+ <%= render 'common/customerdsh'%>
+<%else%>
+  <%= render 'common/nav'%>
+<%end%>
+
 <h1>Login</h1>
 <h1 style="color:red;"><%= flash[:error]%></h1>
-<%= form_with(url: '/login', method: 'post') do |form| %>
-  <div class="form-container">
-    <%= form.label :email, class: "form-label" %>
-    <%= form.email_field :email, class: "form-input" %>
-  </div>
+<%if session[:username]==nil %>
+    <%= form_with(url: '/login', method: 'post') do |form| %>
+     <div class="form-container">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.email_field :email, class: "form-input" %>
+      </div> 
+  <%else%>
+     <%= form_with(url: "dashboard/#{params[:username]}/login", method: 'post')
+      do |form| %>
+      <div class="form-container">
+      <%= form.label :Shop_Username, class: "form-label" %>
+      </div> 
+  <%end%>
 
 
   <div class="form-container">
