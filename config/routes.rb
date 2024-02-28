@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create' , as: 'logined'
   get 'dashboard/:username/login', to: 'sessions#new', as: 'loginshop'
-  post 'dashboard/:username/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'  
   get   '/dashboard/:username',to: 'dashboard#index',as: 'dashboard'
   root "home#index"

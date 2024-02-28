@@ -1,2 +1,57 @@
-  <h1><%= @profile.email%></h1>
-  <h1>Hello Hariom</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Creation Successful</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shop Creation Successful</h1>
+    <p>Congratulations! Your shop <strong><%= @shop.name %></strong> has been successfully created.</p>
+    <p>Username: <strong><%= @profile.username %></strong></p>
+    <p>You can now start managing your shop and adding products.</p>
+    <p>If you have any questions or need assistance, please feel free to contact our support team.</p>
+    <a href="https://yourwebsite.com/dashboard" class="button">Go to Dashboard</a>
+    <p>Thank you for choosing our platform.</p>
+  </div>
+</body>
+</html>
