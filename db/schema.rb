@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_27_125111) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_29_101644) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -57,6 +57,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_125111) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.index ["profile_id"], name: "index_mobiles_on_profile_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status"
+    t.integer "mobile_id", null: false
+    t.integer "shop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false       
+    t.index ["mobile_id"], name: "index_orders_on_mobile_id"
+    t.index ["shop_id"], name: "index_orders_on_shop_id"
   end
 
   create_table "otps", force: :cascade do |t|
@@ -111,5 +121,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_125111) do
   add_foreign_key "mobile_problem_lists", "mobiles"
   add_foreign_key "mobile_problem_lists", "problem_lists"
   add_foreign_key "mobiles", "profiles"
+  add_foreign_key "orders", "mobiles"
+  add_foreign_key "orders", "shops"
   add_foreign_key "shops", "profiles"
 end
