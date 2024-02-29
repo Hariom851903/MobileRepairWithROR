@@ -1,35 +1,42 @@
-
-<%if params[:username]!=nil%>
- <%= render 'common/customerdsh'%>
-<%else%>
-  <%= render 'common/nav'%>
-<%end%>
+<% if params[:username] != nil %>
+  <%= render 'common/customerdsh' %>
+<% else %>
+  <%= render 'common/nav' %>
+<% end %>
 
 <h1>Login</h1>
-<h1 style="color:red;"><%= flash[:error]%></h1>
-<%if session[:username]==nil %>
-    <%= form_with(url: '/login', method: 'post') do |form| %>
-     <div class="form-container">
+<h1 style="color:red;"><%= flash[:error] %></h1>
+
+<% if session[:username] == nil %>
+  <%= form_with(url: '/login', method: :post) do |form| %>
+    <div class="form-container">
       <%= form.label :email, class: "form-label" %>
       <%= form.email_field :email, class: "form-input" %>
-      </div> 
-  <%else%>
-     <%= form_with(url: "dashboard/#{params[:username]}/login", method: 'post')
-      do |form| %>
-      <div class="form-container">
-      <%= form.label :Shop_Username, class: "form-label" %>
-      </div> 
-  <%end%>
+    </div> 
 
-
-  <div class="form-container">
-    <%= form.label :password, class: "form-label" %>
-    <%= form.password_field :password, class: "form-input" %>
-  </div>
-
-  
     <div class="form-container">
-      <%= form.submit "Login", class: "form-submit"%>
+      <%= form.label :password, class: "form-label" %>
+      <%= form.password_field :password, class: "form-input" %>
+    </div>
+
+    <div class="form-container">
+      <%= form.submit "Login", class: "form-submit" %>
     </div>
   <% end %>
-</div>
+<% else %>
+  <%= form_with(url: "/login", method: :post) do |form| %>
+    <div class="form-container">
+      <%= form.label :Shop_Username, class: "form-label" %>
+      <%= form.text_field :s_username, class: "form-input" %>
+    </div> 
+
+    <div class="form-container">
+      <%= form.label :password, class: "form-label" %>
+      <%= form.password_field :password_digest, class: "form-input" %>
+    </div>
+
+    <div class="form-container">
+      <%= form.submit "Login", class: "form-submit" %>
+    </div>
+  <% end %>
+<% end %>
