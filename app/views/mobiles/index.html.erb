@@ -24,10 +24,54 @@
         <td><%= i.brand%></td>
         <td> <%=@p.p_name%></td>
         <td><%= i.description%></td>
+        <%
+=begin%>
+ <%@status=i.orders.where.not(status:['request','complete','reject'])%>
+        <%if @status.length==0%>
+        <td><%=button_to 'Request'%></td>
+        <%else%>
+        <td style="pointer-events:none;"><%=button_to'Requested'%></td>
+        <%end%> 
+<%
+=end%>
         </tr>
          <%end%>
         </tbody>
       </table>
     </div>
-    </div>
   
+    <%= form_tag  mobiles_path(session[:username]), method: :get do%>
+      <div>
+      <label>Enter City</label>
+      <%= text_field_tag :city %><div>
+      <br>
+    
+      <%= button_to 'search'%>
+      <%end%>
+<% if !(params[:city].nil?) %>      
+<h1>shop information</h1>
+ <div class="mobile-details">
+      <table>
+      <thead>
+        <tr>
+        <th>Logo Shop</th>
+          <th>ShopName</th>
+          <th>Address</th>
+          <th>SendRequest</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @shops.each do |shop|%>
+          <tr>
+          <td><img src="<%=shop.image%>", style="height:50px; width:50px;"></td>
+          <td><%=shop.s_name %></td>
+          <td><%= shop.address%></td>
+          <td><%=link_to'Request', neworder_path(session[:username],shop)%></td>
+          </tr>
+          <%end%>
+        </tbody>
+    </table>
+<%end%>
+
+    </div>
+

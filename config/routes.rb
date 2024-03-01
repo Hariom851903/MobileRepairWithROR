@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get '/verification_otp', to: 'profiles#verifyotp', as: 'verificationOtp'
   post '/verify_otp',to: 'profiles#verify', as: 'verifiedotp' 
   post 'resend_otp', to: 'profiles#resend_otp'
-
+  get  'dashboard/:username/requestshop/:shop_id', to: "orders#new", as: 'neworder'
+  post 'dashboard/:username/requestshop', to: "orders#create", as: 'ordercreate'
        resources :otps
       resources :profiles
       scope 'dashboard/:username' do
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
         scope 'dashboard/:username' do 
           resources :shops
       end
+
       # Add routes for customer dashboard here
 
 
