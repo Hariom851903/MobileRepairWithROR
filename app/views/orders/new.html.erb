@@ -1,7 +1,8 @@
-
+<%= flash[:error]%>
+<%= flash[:success]%>
 <%= form_with model:@order,url:ordercreate_path do |form|%>
   <%= form.select :imei,
-  options_for_select(["Mobile_Imei"] ), 
+  options_for_select(@mobiles.map {|imei| imei['imei']}), 
   { prompt: 'Select Mobile Imei' }, class: "form-select", id: "Imei-select" %>
   <%= form.submit%>
 <%end%>
