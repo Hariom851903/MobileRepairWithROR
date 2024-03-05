@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <style>
+    /* Your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin: 20px;
+    }
+    .header {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .content {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>MobileRepairHub</h1>
+    </div>
+    <div class="content">
+      <p>Dear <%= "#{@profile["firstname"]} #{@profile["lastname"]}" %></p>
+      <p>Your order for mobile  <%= @mobile["brand"] %> has been successfully created.</p>
+      <p>Order ID: <strong><%= @trcking["order_id"] %></strong></p>
+      <p>Tracking ID: <strong><%= @trcking["tracking_id"] %></strong></p>
+      <p>Thank you for choosing MobileRepairHub.</p>
+      <div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
+		href="mailto:info@MobileRepairHub.com">info@MobileRepairHub.com</a>. We are here to help!</div>
+		</div>
+    </div>
+  </div>
+</body>
+</html>

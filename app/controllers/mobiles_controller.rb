@@ -6,6 +6,10 @@ class MobilesController < ApplicationController
     def index 
       @profile= Profile.find_by(id:session[:profile_id])
       @mobiles= Mobile.where(profile_id:session[:profile_id])
+    if !(params[:city].nil?)
+      puts params[:city]
+      @shops=Shop.where(city:params[:city])
+    end   
     end
   
     def create
@@ -51,9 +55,12 @@ class MobilesController < ApplicationController
         redirect_to new_mobile_path(username: params[:username])
       end
     end
+       
     
-    
-    
+    def search
+      @shop= Shop.where(city:params[:city])
+    end
+       
     
     
       
