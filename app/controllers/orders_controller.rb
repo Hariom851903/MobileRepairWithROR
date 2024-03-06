@@ -53,5 +53,12 @@ class OrdersController < ApplicationController
                 redirect_to neworder_path(session[:username],params[:shop_id])
             end
         end
+        def statusupdate 
+         @update= Order.find_by(id:) update_columns(status:params[:status])
+         if @update 
+             redirect_to dashboardshop(params[:username],params[:s_username])
+         end
+        end
+ 
 end
 
