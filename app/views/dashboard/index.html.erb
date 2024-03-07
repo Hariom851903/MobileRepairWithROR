@@ -2,7 +2,7 @@
 
 <%= render 'common/customerdsh'%>
 <%if params[:s_username].present? %>
- 
+ <%=flash[:error]%>
  <div class="container">
     <h1>Mobile Request</h1>
     <div class="mobile-details">
@@ -21,27 +21,29 @@
         </thead>
         <tbody>
          <%@orderdetails.each do |recorde|%>
-                  
-        <tr>
-        <td><%= recorde.orders[0].id%></td>
-        <td><%= "#{recorde.firstname} #{recorde.lastname}"%></td>
-        <td><%= recorde.phonenumber%></td>
-        <td><%= recorde.model%></td>
-        <td><%= recorde.brand%></td>   
-        <td><%= recorde.p_name%></td>
-        <td><%= recorde.description%></td>
-        <td style="display:flex; column-gap:5px;">
-        <span> 
-          <%= form_tag(statusupdate_path(params[:username], params[:s_username],recorde.orders[0].id)) do %>
-                 <%= hidden_field_tag :status, "accept" %>
+         <tr>
+ 
+       <td><%=recorde.order_id%></td>
+       <td><%="#{recorde.firstname} #{recorde.lastname}"%></td>
+        <td><%=recorde.phonenumber%></td>
+         <td><%=recorde.brand%></td>
+          <td><%=recorde.model%></td>
+           <td><%=recorde.p_name%></td>
+            <td><%=recorde.description%></td>
+            <td style="display:flex; column-gap:5px;">
+            <span>
+            <%=form_tag statusupdate_path(params[:username],params[:s_username],recorde.order_id) do %>
+               <%= hidden_field_tag :status, "Accept" %>
                 <%= button_tag 'Accept' %>
-                 <% end %>
-
-        </span>
-        <span>
-        <%= button_to 'Reject'%>
-        </span>
-        </td>
+            <%end%>
+            </span>
+             <span>
+            <%=form_tag statusupdate_path(params[:username],params[:s_username],recorde.order_id) do %>
+              <% hidden_field_tag :status, "Reject" %>
+              <%= button_to "Reject" %>
+            <%end%>
+            </span>
+            </td>
         </tr>
          <%end%>
         </tbody>

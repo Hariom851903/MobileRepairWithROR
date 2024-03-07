@@ -62,7 +62,6 @@ class MobilesController < ApplicationController
     end
        
     
-    
       
       private
       

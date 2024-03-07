@@ -5,10 +5,10 @@
     <% if @profile.user == 'customer' && session[:s_username].nil?%>
     <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
     <li><%= link_to 'Home' , root_path%></li>
-      <li><%= link_to 'Add Mobile', new_mobile_path(session[:username]) %></li>
+      <li><%= link_to 'Add Mobile', new_mobile_path(params[:username]) %></li>
       <li><%= link_to 'Update Mobile' %></li>
-      <li><%= link_to 'Tracking' %></li>
-      <li><%= link_to 'Show Mobile', mobiles_path(session[:username])%></li>
+      <li><%= link_to 'Tracking',trackorder_path(params[:username]) %></li>
+      <li><%= link_to 'Show Mobile', mobiles_path(params[:username])%></li>
       <li><%= link_to 'Change Password' %></li>
     <li><%= link_to 'Logout', logout_path %></li>
     <% elsif @profile.user=='Retailer' && session[:s_username].nil? %>
