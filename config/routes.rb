@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'dashboard/:username/requestshop/:shop_id', to: "orders#create", as: 'ordercreate'
   post '/dashboard/:username/shop/:s_username/:order_id', to: 'orders#statusupdate', as: 'statusupdate'
   get  '/dashboard/:usernane/trackorder',to: 'orders#trackorder',as:'trackorder'    
-      resources :otps
+      resources :otps 
       resources :profiles
       scope 'dashboard/:username' do
       # Ex:- scope :active, -> {where(:active => true)}

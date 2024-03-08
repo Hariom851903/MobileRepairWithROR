@@ -68,6 +68,7 @@ class OrdersController < ApplicationController
        @orderdetails=TrackOrder.joins(order:[:shop,mobile:{mobile_problem_lists: :problem_list}])
         .select("orders.*","mobiles.*","problem_lists.*","shops.*","track_orders.*")
         .where("tracking_id=?", params[:tracking_id])
+        puts @orderdetails
     end
 end
 

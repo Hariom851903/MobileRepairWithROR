@@ -3,5 +3,5 @@ class Shop < ApplicationRecord
     belongs_to :profile
     has_many :orders
     has_many :mobiles, through: :orders 
-    
+    has_many :messages     
 end

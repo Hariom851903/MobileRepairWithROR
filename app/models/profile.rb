@@ -39,4 +39,5 @@ class Profile < ApplicationRecord
     has_secure_password
     has_many :mobiles 
     has_many  :shops
+    has_many  :messages 
 end
