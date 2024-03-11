@@ -1,7 +1,8 @@
 
 
-<%= render 'common/customerdsh'%>
-<%if params[:s_username].present? %>
+<%if params[:s_username]==session[:s_username]%>
+ 
+ <%if session[:s_username]!=nil%>
  <%=flash[:error]%>
  <div class="container">
     <h1>Mobile Request</h1>
@@ -50,4 +51,10 @@
       </table>
     </div>
     </div>
-   <%end%> 
+    <%else%>
+    <%= render 'common/customerdsh', profile: @profile %>
+
+    <%end%>
+   <%else%> 
+   <%= render 'common/pagenotfound'%>
+   <%end%>

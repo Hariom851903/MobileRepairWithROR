@@ -1,7 +1,8 @@
-<%@profile=Profile.find_by(username: params[:username])%>
+<%if params[:username]==session[:username]%>
+
 <nav class="navbar">
   <ul>
-    <%= session[:username]%>
+  <%=@profile.image%>
     <% if @profile.user == 'customer' && session[:s_username].nil?%>
     <li class="profile-picture"><%= image_tag(@profile.image) if @profile.image.present? %></li>
     <li><%= link_to 'Home' , root_path%></li>
@@ -22,7 +23,7 @@
       <li><%= link_to 'LoginShop',loginshop_path(params[:username])%></li>
       <li><%= link_to 'Change Password' %></li>
       <li><%= link_to 'Logout', logout_path %></li>
-      <%else%>
+      <%elsif params[:s_username]==session[:s_username]%>
       <li><%= link_to 'Show Request' %></li>
       <li><%= link_to 'ReapairMen'%></li>
       <li><%= link_to 'AssignMobile_to'%><li>
@@ -30,7 +31,12 @@
       <li><%= link_to 'Complete Mobile'%></li>
       <li><%= link_to 'Generate Bill'%><li>
       <li><%= link_to 'logoutshop',logout_path%></li>
+      <%else%>
+               <%= render 'common/pagenotfound'%>
     <% end %>
     
   </ul>
 </nav>
+<%else%>
+   <%=render 'common/pagenotfound'%>
+<%end%>

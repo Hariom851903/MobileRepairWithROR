@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create' , as: 'logined'
   get 'dashboard/:username/login', to: 'sessions#new', as: 'loginshop'
@@ -27,7 +30,7 @@ Rails.application.routes.draw do
           resources :shops
       end
 
-      # Add routes for customer dashboard here
-
+      # unmatch route
+      # match '*unmatched', to: 'application#not_found_method', via: :
 
 end

@@ -54,14 +54,22 @@ class ProfilesController < ApplicationController
         session[:email] = params[:profile][:email]
         sendotp(session[:email])                           
       else  
-        @profile = Profile.new(profile_params)
-        @profile.verified = false 
-        if @profile.save
+        @response = Cloudinary::Uploader.upload(params[:profile][:image])
+        if @response 
+          puts @response['secure_url']
+          @profile = Profile.new(profile_params)
+          @profile.image = @response['secure_url']
+          @profile.verified = false 
+          if @profile.save
           session[:email] = params[:profile][:email]
           sendotp(session[:email])
-        else   
+          else   
             flash[:error]=@profile.errors.messages
             redirect_to new_profile_path
+          end
+        else 
+          flash[:error]="image upload faild"
+          redirect_to new_profile_path
         end
       end
     rescue => e
@@ -118,7 +126,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:username, :firstname, :lastname, :user, :gender, :dob, 
-    :email, :password, :state, :city, :address, :phonenumber, :image)
+    :email, :password, :state, :city, :address, :phonenumber)
   end
 
     def api_state

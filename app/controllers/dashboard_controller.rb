@@ -2,8 +2,8 @@ class DashboardController < ApplicationController
                 
         def index 
             @username=params[:username]
-            @profile=Profile.find_by(username: params[:username])
-            if params[:s_username].present?
+            @profile=Profile.find_by(username: session[:username])
+            if session[:s_username].present?
 
            @orderdetails=s = Order.joins([mobile: [:profile,
            { mobile_problem_lists: :problem_list }]],:shop)
