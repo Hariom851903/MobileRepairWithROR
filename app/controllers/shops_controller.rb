@@ -36,7 +36,10 @@ class ShopsController < ApplicationController
       redirect_to new_shop_path(params[:username])
     end
   end
-         
+    
+  
+ 
+  
   private 
   def shop_params 
     params.require(:shop).permit(:s_name, :s_username, :password_digest, :state, :district, :city, :address)

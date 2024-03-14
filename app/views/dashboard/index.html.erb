@@ -1,3 +1,60 @@
 
 
-<%= render 'common/customerdsh'%>
+<%if params[:s_username]==session[:s_username]%>
+ 
+ <%if session[:s_username]!=nil%>
+ <%=flash[:error]%>
+ <div class="container">
+    <h1>Mobile Request</h1>
+    <div class="mobile-details">
+      <table>
+      <thead>
+        <tr>
+          <th>Order_Id</th>
+          <th>Customer_name</th>
+          <th>PhoneNumber</th>
+          <th>Model</th>
+          <th>Brand</th>
+          <th>Problem</th>
+          <th>ProblemDescription</th>
+           <th>UpdateStatus</th>
+        </tr>
+        </thead>
+        <tbody>
+         <%@orderdetails.each do |recorde|%>
+         <tr>
+ 
+       <td><%=recorde.order_id%></td>
+       <td><%="#{recorde.firstname} #{recorde.lastname}"%></td>
+        <td><%=recorde.phonenumber%></td>
+         <td><%=recorde.brand%></td>
+          <td><%=recorde.model%></td>
+           <td><%=recorde.p_name%></td>
+            <td><%=recorde.description%></td>
+            <td style="display:flex; column-gap:5px;">
+            <span>
+            <%=form_tag statusupdate_path(params[:username],params[:s_username],recorde.order_id) do %>
+               <%= hidden_field_tag :status, "Accept" %>
+                <%= button_tag 'Accept' %>
+            <%end%>
+            </span>
+             <span>
+            <%=form_tag statusupdate_path(params[:username],params[:s_username],recorde.order_id) do %>
+              <% hidden_field_tag :status, "Reject" %>
+              <%= button_to "Reject" %>
+            <%end%>
+            </span>
+            </td>
+        </tr>
+         <%end%>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <%else%>
+    <%= render 'common/customerdsh', profile: @profile %>
+
+    <%end%>
+   <%else%> 
+   <%= render 'common/pagenotfound'%>
+   <%end%>

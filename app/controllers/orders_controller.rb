@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
         def create 
             begin
                 @mobile=Mobile.find_by(imei:params[:order][:imei])
-                @previous_order=@mobile.orders.where(status:['requested','reject','complete'])
+                @previous_order=@mobile.orders.where(status:['requested','Accept','Pendding'])
             
                 if @previous_order.length==0 
                     @order=@mobile.orders.create(status:'requested',shop_id:params[:shop_id])
@@ -53,5 +53,22 @@ class OrdersController < ApplicationController
                 redirect_to neworder_path(session[:username],params[:shop_id])
             end
         end
+        def statusupdate 
+         @update=Order.find_by("id=? And status=?",params[:order_id],"requested")
+                .update_columns(status:params[:status])
+
+         if @update 
+            redirect_to dashboardshop_path(params[:username],params[:s_username])
+         else 
+            flash[:error]="Status not updated"
+            redirect_to dashboardshop_path(params[:username],params[:s_username])
+         end
+        end
+    def trackorder
+       @orderdetails=TrackOrder.joins(order:[:shop,mobile:{mobile_problem_lists: :problem_list}])
+        .select("orders.*","mobiles.*","problem_lists.*","shops.*","track_orders.*")
+        .where("tracking_id=?", params[:tracking_id])
+        puts @orderdetails
+    end
 end
 

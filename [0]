@@ -1,0 +1,22 @@
+ => 
+[[32m#<Order:0x000055b5bdafcd78[0m
+  id: [34m[1m1[0m,
+  status: [31m[1m"[0m[31mrequested[0m[31m[1m"[0m,
+  mobile_id: [34m[1m1[0m,
+  shop_id: [34m[1m1[0m,
+  created_at: Thu, 29 Feb 2024 10:40:01.162739000 UTC +00:00,
+  updated_at: Thu, 29 Feb 2024 10:40:01.162739000 UTC +00:00[32m>[0m,
+ [32m#<Order:0x000055b5bdafccb0[0m
+  id: [34m[1m2[0m,
+  status: [31m[1m"[0m[31mrequested[0m[31m[1m"[0m,
+  mobile_id: [34m[1m2[0m,
+  shop_id: [34m[1m1[0m,
+  created_at: Thu, 07 Mar 2024 05:45:48.931709000 UTC +00:00,
+  updated_at: Thu, 07 Mar 2024 05:45:48.931709000 UTC +00:00[32m>[0m,
+ [32m#<Order:0x000055b5bdafcbe8[0m
+  id: [34m[1m3[0m,
+  status: [31m[1m"[0m[31mrequested[0m[31m[1m"[0m,
+  mobile_id: [34m[1m3[0m,
+  shop_id: [34m[1m1[0m,
+  created_at: Thu, 07 Mar 2024 07:03:22.629787000 UTC +00:00,
+  updated_at: Thu, 07 Mar 2024 07:03:22.629787000 UTC +00:00[32m>[0m] 

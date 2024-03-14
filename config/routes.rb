@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create' , as: 'logined'
   get 'dashboard/:username/login', to: 'sessions#new', as: 'loginshop'
@@ -15,7 +18,9 @@ Rails.application.routes.draw do
   post 'resend_otp', to: 'profiles#resend_otp'
   get  'dashboard/:username/requestshop/:shop_id', to: "orders#new", as: 'neworder'
   post 'dashboard/:username/requestshop/:shop_id', to: "orders#create", as: 'ordercreate'
-       resources :otps
+  post '/dashboard/:username/shop/:s_username/:order_id', to: 'orders#statusupdate', as: 'statusupdate'
+  get  '/dashboard/:usernane/trackorder',to: 'orders#trackorder',as:'trackorder'    
+      resources :otps 
       resources :profiles
       scope 'dashboard/:username' do
       # Ex:- scope :active, -> {where(:active => true)}
@@ -25,7 +30,7 @@ Rails.application.routes.draw do
           resources :shops
       end
 
-      # Add routes for customer dashboard here
-
+      # unmatch route
+      # match '*unmatched', to: 'application#not_found_method', via: :
 
 end

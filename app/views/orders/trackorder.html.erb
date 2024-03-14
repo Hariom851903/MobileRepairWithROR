@@ -1,0 +1,50 @@
+
+
+
+ <%= form_tag  trackorder_path ,method: "get" do%>
+      <div>
+      <label>Enter tracking_id</label>
+      <%= text_field_tag :tracking_id %><div>
+      <br>
+    
+      <%= button_to 'search'%>
+      <%end%>
+ <%=flash[:error]%>
+ <%if @orderdetails.length!=0%>
+ <div class="container">
+    <h1>Track Mobile Status</h1>
+    <div class="mobile-details">
+      <table>
+      <thead>
+        <tr>
+          <th>Order_Id</th>
+          <th>Shop_Name</th>
+          <th>Imei</th>
+          <th>Model</th>
+          <th>Brand</th>
+          <th>Problem</th>
+          <th>ProblemDescription</th>
+           <th>Status</th>
+           <th>Chat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @orderdetails.each  do |recorde| %>
+              
+         <tr>
+              <td><%= recorde.order_id%></td>
+               <td><%= recorde.s_name%></td>
+               <td><%= recorde.imei%></td>
+               <td><%= recorde.model%></td>
+               <td><%= recorde.brand%></td>
+               <td><%= recorde.p_name%></td>
+               <td><%= recorde.description%></td>
+               <td><%= recorde.status%></td>
+               <td><%= button_to 'Chat'%></td>
+        </tr>
+        </tbody>
+        <%end%>
+      </table>
+    </div>
+    </div>
+   <%end%> 
